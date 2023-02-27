@@ -4,11 +4,13 @@ type ALP = {
     alphaIndex: (alpha: string) => void
 };
 
-export const RecipeItems = ({alphaIndex}: ALP) => {
-    const alpha = ["A", "B", "C", "D", "E", "F", "G", 
-        "H", "I", "J", "K", "L", "M", "N", "O", 
-        "P", "Q", "R", "S", "T", "U", "V", 
-        "W", "X", "Y", "Z"];
+export const RecipeItems = ({alphaIndex}: ALP) => {    
+    const alpha: string[] = [
+        "A", "B", "C", "D", "E", "F", "G", 
+        "H", "I", "J", "K", "L", "M", "N", 
+        "O", "P", "Q", "R", "S", "T", "U", 
+        "V", "W", "X", "Y", "Z"
+    ];
 
     var num = 0;
 
@@ -19,7 +21,7 @@ export const RecipeItems = ({alphaIndex}: ALP) => {
                     key={num++} 
                     className="numBox"
                     onClick={() => alphaIndex(item)}
-                    >
+                >
                     <h3>{item}</h3>
                 </section>
             ))}

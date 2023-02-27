@@ -2,12 +2,13 @@ import React from "react";
 import { MealItems } from "../components/MealItems";
 import { RecipeItems } from "../components/RecipeItems";
 import { IMLetter } from "../models/Interfaces";
-const URL = "https://www.themealdb.com/api/json/v1/1/search.php?";
+const URL = "https://www.themealdb.com/api/json/v1/1/search.php";
 
 export const Meals = () => {
     const [url, setUrl] = React.useState(URL);
     const [item, setItem] = React.useState<IMLetter[]>([]);
     const [show, setShow] = React.useState(false);
+    const [search, setSearch] = React.useState("");
 
     React.useEffect(() => {
         fetch(url)
@@ -20,7 +21,13 @@ export const Meals = () => {
     }, [url]);
 
     const setIndex = (alpha: string) => {
-        setUrl(`${URL}f=${alpha}`);
+        setUrl(`${URL}?f=${alpha}`);
+    };
+
+    const searchRecipe = 
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUrl(`${URL}?s=${search}`);
+        setSearch(event.target.value);
     };
     
     return (
@@ -32,7 +39,11 @@ export const Meals = () => {
                         Come see what we have...😋</h4>
                 </aside>
                 <aside className="searchBox">
-                    <input type="search" className="search__bar" />
+                    <input 
+                        type="search" 
+                        className="search__bar" 
+                        onChange={searchRecipe}
+                    />
                 </aside>
                 <aside className="container">
                     {
