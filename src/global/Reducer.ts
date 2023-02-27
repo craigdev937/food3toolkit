@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { LetterReducer } from "./LetterSlice";
 
 export const Reducer = configureStore({
     reducer: {
-        mealsByLetter: () => "Meals by First Letter!",
+        letters: LetterReducer,
         mealsByName: () => "Meals by Name!",
         categories: () => "Meals by Categories!"
     },

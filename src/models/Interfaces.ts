@@ -21,8 +21,8 @@ export interface IMLetter {
 };
 
 export interface IMLetterState {
-    mealsByLetter: IMLetter[],
-    loading: false,
+    letters: IMLetter[],
+    loading: boolean,
     error: Error | null
 };
 

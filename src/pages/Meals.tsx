@@ -14,12 +14,11 @@ export const Meals = () => {
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
-            console.log(data.meals);
             setItem(data.meals);
             setShow(true);
         })
     }, [url]);
-
+    
     const setIndex = (alpha: string) => {
         setUrl(`${URL}?f=${alpha}`);
     };
@@ -29,7 +28,7 @@ export const Meals = () => {
         setUrl(`${URL}?s=${search}`);
         setSearch(event.target.value);
     };
-    
+
     return (
         <React.Fragment>
             <section className="main">
@@ -47,7 +46,9 @@ export const Meals = () => {
                 </aside>
                 <aside className="container">
                     {
-                        show ? <MealItems data={item} /> : "Not Found!"
+                        show ? 
+                            <MealItems data={item} /> : 
+                            "Not Found!"
                     }
                 </aside>
                 <section className="indexContainer">
