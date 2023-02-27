@@ -12,7 +12,7 @@ const Router = createBrowserRouter([
         errorElement: <NotFound />,
         children: [
             {
-                path: "/recipeId",
+                path: "/:recipeId",
                 element: <Recipe />,
                 errorElement: <NotFound />
             }

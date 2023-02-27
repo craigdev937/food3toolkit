@@ -1,12 +1,23 @@
 import React from "react";
+import { IMLetter } from "../models/Interfaces";
 
-export const MealItems = () => {
+type IDA = {
+    data: IMLetter[]
+};
+
+export const MealItems = ({ data }: IDA) => {
     return (
         <React.Fragment>
-            <section className="card">
-                <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" alt="" />
-                <h3>Spicy Arrabiata Penne</h3>
-            </section>
+            {
+                (!data) ? "Not Found!" : data.map((item) => (
+                    (
+                        <section key={item.idMeal} className="card">
+                            <img src={item.strMealThumb} alt="" />
+                            <h3>{item.strMeal}</h3>
+                        </section>
+                    )
+                ))
+            }
         </React.Fragment>
     );
 };
