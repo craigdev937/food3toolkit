@@ -8,29 +8,30 @@ const initialState: IDataState = {
     error: null
 };
 
-const LetterSlice = createSlice({
-    name: "letters",
+const IDSlice = createSlice({
+    name: "ids",
     initialState: initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(API.getLetter.rejected.toString(), 
+        builder.addCase(API.getId.rejected.toString(), 
         (state, action: PayloadAction<IDataState>) => {
             state.loading = false,
             state.error = action.payload.error
-        }),
-        builder.addCase(API.getLetter.pending, 
+        });
+        builder.addCase(API.getId.pending, 
         (state) => {
             state.loading = true,
             state.error = null
         });
-        builder.addCase(API.getLetter.fulfilled.type, 
-            (state, action: PayloadAction<IData[]>) => {
-                state.loading = false,
-                state.data = [...action.payload]
-            });
-    },
+        builder.addCase(API.getId.fulfilled.type, 
+        (state, action: PayloadAction<IData[]>) => {
+            state.loading = false,
+            state.data = action.payload
+        });
+    }
 });
 
-export const LetterReducer = LetterSlice.reducer;
+export const IDReducer = IDSlice.reducer;
+
 
 

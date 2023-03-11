@@ -1,4 +1,4 @@
-export interface IMLetter {
+export interface IData {
     idMeal: string,
     strMeal: string,
     strDrinkAlternate: null,
@@ -20,8 +20,8 @@ export interface IMLetter {
     strIngredient10: string,
 };
 
-export interface IMLetterState {
-    letters: IMLetter[],
+export interface IDataState {
+    data: IData[],
     loading: boolean,
     error: Error | null
 };

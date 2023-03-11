@@ -6,7 +6,7 @@ export const Search = () => {
     const [query, setQuery] = React.useState("");
     const dispatch = useAppDispatch();
     const loading = useAppSelector((state) => state.letters.loading);
-    const allLetters = useAppSelector((state) => state.letters.letters);
+    const allLetters = useAppSelector((state) => state.letters.data);
 
     const handleChange = 
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +40,10 @@ export const Search = () => {
                 {allLetters.map((search) => (
                     <aside key={search.idMeal}>
                         <h1>{search.strMeal}</h1>
-                        <img src={search.strMealThumb} alt={search.strMeal} />
+                        <img 
+                            alt={search.strMeal}
+                            src={search.strMealThumb} 
+                        />
                     </aside>
                 ))}
             </section>

@@ -1,22 +1,22 @@
 import React from "react";
 import { MealItems } from "../components/MealItems";
 import { RecipeItems } from "../components/RecipeItems";
-import { IMLetter } from "../models/Interfaces";
+import { IData } from "../models/Interfaces";
 const URL = "https://www.themealdb.com/api/json/v1/1/search.php";
 
 export const Meals = () => {
     const [url, setUrl] = React.useState(URL);
-    const [item, setItem] = React.useState<IMLetter[]>([]);
+    const [item, setItem] = React.useState<IData[]>([]);
     const [show, setShow] = React.useState(false);
     const [search, setSearch] = React.useState("");
 
-    React.useEffect(() => {
+    React.useEffect(() => {        
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
             setItem(data.meals);
             setShow(true);
-        })
+        }).catch((error) => console.log(error));
     }, [url]);
     
     const setIndex = (alpha: string) => {
